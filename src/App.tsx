@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCreative, HashNavigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-creative";
-import "swiper/css";
 
 import { IconButton } from "@mui/material";
 import NavBar from "./components/common/NavBar";
