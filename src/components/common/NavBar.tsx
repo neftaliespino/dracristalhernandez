@@ -20,7 +20,7 @@ const NavBar = () => {
   const hide = false;
   //   const [color, setColor] = useState<ColorType>(null);
   //   const [hide, setHide] = useState(false);
-  const [onOpenMenu, setOnOpenMenu] = useState(isMobile);
+  const [onOpenMenu, setOnOpenMenu] = useState(false);
 
   const onShow = () => {
     setOnOpenMenu((prev) => !prev);
