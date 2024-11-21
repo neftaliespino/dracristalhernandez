@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 
 import { CssBaseline } from "@mui/material";

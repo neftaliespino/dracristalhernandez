@@ -10,13 +10,8 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { CSSProperties, useEffect, useState } from "react";
+import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-
-type ColorType = {
-  iconColor: CSSProperties["color"];
-  textColor: CSSProperties["color"];
-} | null;
 
 const NavBar = () => {
   const theme = useTheme();
