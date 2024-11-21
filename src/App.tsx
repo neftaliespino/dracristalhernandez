@@ -15,8 +15,11 @@ import CvPage from "./pages/CvPage";
 import ContactPage from "./pages/ContactPage";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import { useEffect } from "react";
+import { useTour } from "@reactour/tour";
 
 function App() {
+  const { setIsOpen } = useTour();
   const slideHashes = [
     "main",
     "experience",
@@ -25,6 +28,7 @@ function App() {
     "cv",
     "about",
   ];
+
   const goToNextSlide = () => {
     const currentHash = window.location.hash.replace("#", "");
     const currentIndex = slideHashes.indexOf(currentHash);
@@ -39,6 +43,15 @@ function App() {
     const nextIndex = currentIndex % slideHashes.length;
     window.location.hash = slideHashes[nextIndex];
   };
+
+  useEffect(() => {
+    const hasSeenTour = localStorage.getItem("hasSeenTour");
+    if (!hasSeenTour) {
+      setIsOpen(true);
+      localStorage.setItem("hasSeenTour", "true");
+    }
+  }, []);
+
   return (
     <>
       <NavBar />
@@ -56,7 +69,7 @@ function App() {
           cursor: "pointer",
         }}
       >
-        <ArrowCircleRightIcon color="secondary" />
+        <ArrowCircleRightIcon color="secondary" className="right-arrow-btn" />
       </IconButton>
       <IconButton
         onClick={goToPrevSlide}
@@ -71,7 +84,7 @@ function App() {
           cursor: "pointer",
         }}
       >
-        <ArrowCircleLeftIcon color="secondary" />
+        <ArrowCircleLeftIcon color="secondary" className="left-arrow-btn" />
       </IconButton>
 
       <Swiper
