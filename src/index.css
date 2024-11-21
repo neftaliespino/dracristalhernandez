@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "Gangster";
+  src: url("./assets/fonts/GangsterSN-Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Meno";
+  src: url("./assets/fonts/MenoDisplay-XCondLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Roslindale";
+  src: url("./assets/fonts/RoslindaleDisplayCondensed-Light.otf") format("opentype");
+}
+
+body {
+  background-color: #ffffff
+}
+
+.swiper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #79766E;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.swiper-slide:nth-child(n) {
+  display: flex;
+  justify-content: center;
+}
