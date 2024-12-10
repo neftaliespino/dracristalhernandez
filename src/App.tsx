@@ -1,11 +1,16 @@
 import "./App.css";
 import "./index.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCreative, HashNavigation } from "swiper/modules";
+import {
+  EffectCreative,
+  HashNavigation,
+  Mousewheel,
+  Pagination,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-creative";
+import "swiper/css/mousewheel";
 
-import { IconButton } from "@mui/material";
 import NavBar from "./components/common/NavBar";
 import MainPage from "./pages/MainPage";
 import IntroductionPage from "./pages/IntroductionPage";
@@ -13,36 +18,12 @@ import ServicesPage from "./pages/ServicesPage";
 import Expertise from "./pages/Expertise";
 import CvPage from "./pages/CvPage";
 import ContactPage from "./pages/ContactPage";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+
 import { useEffect } from "react";
 import { useTour } from "@reactour/tour";
 
 function App() {
   const { setIsOpen } = useTour();
-  const slideHashes = [
-    "main",
-    "experience",
-    "services",
-    "expertise",
-    "cv",
-    "about",
-  ];
-
-  const goToNextSlide = () => {
-    const currentHash = window.location.hash.replace("#", "");
-    const currentIndex = slideHashes.indexOf(currentHash);
-    const nextIndex = (currentIndex + 1) % slideHashes.length;
-    window.location.hash = slideHashes[nextIndex];
-  };
-
-  const goToPrevSlide = () => {
-    const currentHash = window.location.hash.replace("#", "");
-    let currentIndex = slideHashes.indexOf(currentHash);
-    currentIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : 5;
-    const nextIndex = currentIndex % slideHashes.length;
-    window.location.hash = slideHashes[nextIndex];
-  };
 
   useEffect(() => {
     const hasSeenTour = localStorage.getItem("hasSeenTour");
@@ -55,54 +36,16 @@ function App() {
   return (
     <>
       <NavBar />
-
-      <IconButton
-        onClick={goToNextSlide}
-        style={{
-          position: "fixed",
-          top: "50%",
-          right: "0px",
-          zIndex: 100,
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        <ArrowCircleRightIcon color="secondary" className="right-arrow-btn" />
-      </IconButton>
-      <IconButton
-        onClick={goToPrevSlide}
-        style={{
-          position: "fixed",
-          top: "50%",
-          left: "0px",
-          zIndex: 100,
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        <ArrowCircleLeftIcon color="secondary" className="left-arrow-btn" />
-      </IconButton>
-
       <Swiper
-        grabCursor={true}
-        effect={"creative"}
+        direction={"vertical"}
         hashNavigation={{
           watchState: true,
         }}
-        creativeEffect={{
-          prev: {
-            shadow: true,
-            translate: [0, 0, -400],
-          },
-          next: {
-            translate: [0, "100%", 0],
-          },
+        pagination={{
+          clickable: true,
         }}
-        modules={[EffectCreative, HashNavigation]}
+        mousewheel={true}
+        modules={[Pagination, HashNavigation, Mousewheel]}
         className="mySwiper"
       >
         <SwiperSlide data-hash="main">
@@ -111,16 +54,17 @@ function App() {
         <SwiperSlide data-hash="experience">
           <IntroductionPage />
         </SwiperSlide>
-        <SwiperSlide data-hash="services">
-          <ServicesPage />
+        <SwiperSlide data-hash="about">
+          <CvPage />
         </SwiperSlide>
         <SwiperSlide data-hash="expertise">
           <Expertise />
         </SwiperSlide>
-        <SwiperSlide data-hash="cv">
-          <CvPage />
+        <SwiperSlide data-hash="services">
+          <ServicesPage />
         </SwiperSlide>
-        <SwiperSlide data-hash="about">
+
+        <SwiperSlide data-hash="contact">
           <ContactPage />
         </SwiperSlide>
       </Swiper>
