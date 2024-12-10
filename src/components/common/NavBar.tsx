@@ -104,7 +104,7 @@ const NavBar = () => {
                 <Grid2>
                   <Link
                     variant="body2"
-                    href="#about"
+                    href="#experience"
                     rel="noopener noreferrer"
                     data-auth="NotApplicable"
                     color="secondary.main"
