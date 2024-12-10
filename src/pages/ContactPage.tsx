@@ -13,7 +13,7 @@ import desktopBackgroundImage from "../assets/images/desktop6.webp";
 import mobileBackgroundImage from "../assets/images/mobile3.webp";
 import DImageBox from "../components/common/DImageBox";
 import mainLogo from "../assets/images/mainLogo.svg";
-import subLogoMobile from "../assets/images/subLogoMobile.svg";
+import subLogoMobile from "../assets/images/minLogoContact.svg";
 import minLogo from "../assets/images/minLogo.svg";
 
 const ContactPage = () => {
